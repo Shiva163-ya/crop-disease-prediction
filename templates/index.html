@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crop Disease Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Crop Disease Prediction</h1>
+      <p>Upload a crop leaf image to check for common diseases.</p>
+    </header>
+
+    <form method="post" enctype="multipart/form-data" class="upload-form">
+      <label for="leaf_image">Choose leaf image</label>
+      <input type="file" name="leaf_image" id="leaf_image" accept="image/*" required>
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+      <div class="result-box">
+        <h2>{{ prediction[0] }}</h2>
+        <p>{{ prediction[1] }}</p>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
